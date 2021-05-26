@@ -19,6 +19,7 @@ class LeagueResource extends JsonResource
             'points' => $this->points,
             'played' => $this->played,
             'won' => $this->won,
+            'lost' => $this->lost,
             'draw' => $this->draw,
             'goal_difference' => $this->goal_difference,
             'team' => new TeamResource($this->whenLoaded('team')),
