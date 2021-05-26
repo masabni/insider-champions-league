@@ -4,17 +4,17 @@
 namespace App\Repositories;
 
 
-use App\Models\Match;
+use App\Models\Matches;
 use App\Repositories\Interfaces\MatchInterface;
 
 class MatchRepository implements MatchInterface
 {
     /**
-     * @var Match
+     * @var Matches
      */
     private $match;
 
-    public function __construct(Match $match)
+    public function __construct(Matches $match)
     {
         $this->match = $match;
     }
@@ -31,6 +31,6 @@ class MatchRepository implements MatchInterface
 
     public function create(array $result)
     {
-        // TODO: Implement create() method.
+        return $this->match->create($result);
     }
 }

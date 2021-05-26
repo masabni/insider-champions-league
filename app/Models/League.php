@@ -16,6 +16,7 @@ class League extends Model
         'points',
         'played',
         'won',
+        'lost',
         'draw',
         'goal_difference',
     ];

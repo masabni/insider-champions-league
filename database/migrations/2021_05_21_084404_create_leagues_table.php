@@ -19,6 +19,7 @@ class CreateLeaguesTable extends Migration
             $table->tinyInteger('points')->default(0);
             $table->tinyInteger('played')->default(0);
             $table->tinyInteger('won')->default(0);
+            $table->tinyInteger('lost')->default(0);
             $table->tinyInteger('draw')->default(0);
             $table->tinyInteger('goal_difference')->default(0);
         });

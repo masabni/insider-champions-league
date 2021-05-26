@@ -9,9 +9,15 @@ class Week extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+    protected $casts = [
+        'played' => 'boolean',
+    ];
+
     public function matches()
     {
-        return $this->hasMany('App\Models\Match');
+        return $this->hasMany('App\Models\Matches');
     }
 
     public function scopePlayed($query)
@@ -19,8 +25,13 @@ class Week extends Model
         return $query->where('played', 1);
     }
 
-    public function setPlayed()
+    public function scopeNotPlayed($query)
     {
-        return $this->update(['played' => 1]);
+        return $query->where('played', 0);
+    }
+
+    public function scopeSetPlayed($query)
+    {
+        return $query->update(['played' => 1]);
     }
 }

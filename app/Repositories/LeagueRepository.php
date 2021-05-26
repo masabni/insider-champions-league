@@ -26,11 +26,12 @@ class LeagueRepository implements LeagueInterface
                 $q->with($with);
             })
             ->orderBy('points', 'desc')
+            ->orderBy('goal_difference', 'desc')
             ->get();
     }
 
-    public function updateMatchLeaderboard(array $result)
+    public function getTeam(int $team_id)
     {
-        // TODO: Implement updateMatchLeaderboard() method.
+        return $this->league->where('team_id', $team_id)->first();
     }
 }

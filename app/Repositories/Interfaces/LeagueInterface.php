@@ -8,5 +8,5 @@ interface LeagueInterface
 {
     public function all(array $with = []);
 
-    public function updateMatchLeaderboard(array $result);
+    public function getTeam(int $team_id);
 }

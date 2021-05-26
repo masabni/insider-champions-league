@@ -15,10 +15,10 @@ class PredictionsService
         for ($i = 1; $i <= config('app.num_of_trials'); $i++) {
             foreach ($league as $team) {
                 $points_margin = $first_team_points - $team->points;
-                $result[$team->team->id] = $result[$team->team->id] ?? 0;
+                $result[$team->team->name] = $result[$team->team->id] ?? 0;
                 // given team strength, points margin between this team and the first place team
                 // TODO take into consideration the teams strength for the upcoming matches
-                $result[$team->team->id] +=
+                $result[$team->team->name] +=
                     rand(($team->team->strength - $points_margin - $team->played) / 2, $team->team->strength);
             }
         }
@@ -31,6 +31,8 @@ class PredictionsService
         foreach ($result as $key => $value) {
             $result[$key] = $value / $sum * 100;
         }
+
+        arsort($result, SORT_NUMERIC);
 
         return $result;
     }
